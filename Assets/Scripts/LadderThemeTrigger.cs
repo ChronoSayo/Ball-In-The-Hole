@@ -35,11 +35,6 @@ public class LadderThemeTrigger : LadderTheme
         }
     }
 
-    protected override bool Fade(AudioSource song, bool increase)
-    {
-        return base.Fade(song, increase);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Ball")

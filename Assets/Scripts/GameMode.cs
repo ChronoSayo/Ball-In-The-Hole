@@ -168,7 +168,6 @@ public class GameMode : MonoBehaviour
         else
         {
             Vector3 v = Input.mousePosition;
-            Color c = _wallRenders[0].material.color;
             int scale = 1000;
             foreach (Renderer r in _wallRenders)
                 r.material.color = new Color(v.x / scale, v.y / scale, (v.x + v.y) / scale);
@@ -209,14 +208,14 @@ public class GameMode : MonoBehaviour
             CurrentGameModeState = GameModeState.Info;
             ButtonHandler.HelpButton = true;
             _helpText.gameObject.SetActive(true);
-            _scoreboardScript.EnableScoreboardGUI(false);
+            _scoreboardScript.EnableScoreboardGui(false);
         }
         else if (ButtonHandler.CreditsButton)
         {
             CurrentGameModeState = GameModeState.Info;
             ButtonHandler.CreditsButton = true;
             _creditsText.SetActive(true);
-            _scoreboardScript.EnableScoreboardGUI(false);
+            _scoreboardScript.EnableScoreboardGui(false);
         }
 
         if (ButtonHandler.GradientButton)
@@ -315,7 +314,7 @@ public class GameMode : MonoBehaviour
                     ButtonHandler.CreditsButton = false;
                     _creditsText.SetActive(false);
                 }
-                _scoreboardScript.EnableScoreboardGUI(true);
+                _scoreboardScript.EnableScoreboardGui(true);
             }
             else
                 Application.Quit();

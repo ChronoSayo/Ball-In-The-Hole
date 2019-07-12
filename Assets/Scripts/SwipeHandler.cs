@@ -9,7 +9,7 @@ public class SwipeHandler : MonoBehaviour
 
     void Start ()
     {
-        _midScreenPosition = new Vector2(Screen.width / 2, Screen.height / 2);
+        _midScreenPosition = new Vector2(Screen.width / 2, y: Screen.height / 2);
     }
     
     void Update ()

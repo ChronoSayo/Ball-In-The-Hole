@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Globalization;
 using UnityEngine;
 
 public class Scoreboard : MonoBehaviour
 {
     private TextMesh _score, _timer, _bestScore, _legacy;
-    private int _time, _bonusTimeStart, _storedLegacy, _legacyCounter;
+    private int _bonusTimeStart, _storedLegacy, _legacyCounter;
     private float _bestCurrentScore, _currentSeconds;
 
-    private const int _BASE_POINTS = 1;
+    private const int BasePoints = 1;
 
     void Start ()
     {
@@ -16,8 +15,6 @@ public class Scoreboard : MonoBehaviour
         {
             if (t.name == "ScoreText")
                 _score = t.GetComponent<TextMesh>();
-            //if (t.name == "ComboText")
-            //    _combo = t.GetComponent<TextMesh>();
             if (t.name == "TimerText")
                 _timer = t.GetComponent<TextMesh>();
             if (t.name == "BestScoreText")
@@ -70,14 +67,12 @@ public class Scoreboard : MonoBehaviour
                 _storedLegacy++;
             bonus *= _legacyCounter;
             int addedBonus = i * bonus;
-            int basePoints = addedBonus * _BASE_POINTS;
-            //float comboPoints = _comboCount + (i * _comboIncrease);
+            int basePoints = addedBonus * BasePoints;
 
             float timeBonus = _bonusTimeStart + _currentSeconds;
             if (_currentSeconds < 1)
                 timeBonus = 0;
-
-            //CurrentScore += basePoints + comboPoints;
+            
             CurrentScore += basePoints + timeBonus;
         }
 
@@ -89,8 +84,7 @@ public class Scoreboard : MonoBehaviour
     private void UpdateText(TextMesh text, float num)
     {
         string[] split = text.text.Split(' ');
-        string numText = split[1];
-        numText = num.ToString();
+        var numText = num.ToString(CultureInfo.InvariantCulture);
         text.text = text.text.Replace(split[1], numText);
     }
 
@@ -100,8 +94,7 @@ public class Scoreboard : MonoBehaviour
 
         _currentSeconds -= Time.deltaTime;
 
-        string time = (_currentSeconds - Time.deltaTime).ToString();
-        time = string.Format("{0:0}:{1:00}", Mathf.Floor(_currentSeconds / 60), Mathf.Floor(_currentSeconds % 60));
+        var time = string.Format("{0:0}:{1:00}", Mathf.Floor(_currentSeconds / 60), Mathf.Floor(_currentSeconds % 60));
         _timer.text = _timer.text.Replace(split[1], time);
     }
 
@@ -119,7 +112,7 @@ public class Scoreboard : MonoBehaviour
         UpdateTimerText();
     }
 
-    public void EnableScoreboardGUI(bool enable)
+    public void EnableScoreboardGui(bool enable)
     {
         _score.gameObject.SetActive(enable);
         _timer.gameObject.SetActive(enable);

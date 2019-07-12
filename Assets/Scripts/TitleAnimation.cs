@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TitleAnimation : MonoBehaviour
@@ -16,7 +15,7 @@ public class TitleAnimation : MonoBehaviour
 
     private enum State
     {
-        None, Start, Phase1, Phase2, Phase3, Phase4, MAX
+        None, Start, Phase1, Phase2, Phase3, Phase4, Max
     }
 
     void Start ()
@@ -61,21 +60,21 @@ public class TitleAnimation : MonoBehaviour
                 StartValues();
                 break;
             case State.Phase1:
-                MoveAndSetNext(false, 2);
+                MoveAndSetNext(false);
                 break;
             case State.Phase2:
-                MoveAndSetNext(true, 5);
+                MoveAndSetNext(true);
                 break;
             case State.Phase3:
-                MoveAndSetNext(false, 4);
+                MoveAndSetNext(false);
                 break;
             case State.Phase4:
-                MoveAndSetNext(false, 0);
+                MoveAndSetNext(false);
                 break;
         }
     }
 
-    private void MoveAndSetNext(bool clockwise, float duration)
+    private void MoveAndSetNext(bool clockwise)
     {
         if (!TimeOut())
         {
@@ -87,7 +86,7 @@ public class TitleAnimation : MonoBehaviour
             _tick = 0;
             _clockwise = clockwise;
             _state += 1;
-            if (_state == State.MAX)
+            if (_state == State.Max)
                 StartValues();
         }
     }
@@ -136,11 +135,11 @@ public class TitleAnimation : MonoBehaviour
             _state = State.Start;
             transform.position = GetStartPosition;
             transform.rotation = Quaternion.Euler(_startRot);
-            _pauseBall.gameObject.SetActive(enable);
+            _pauseBall.gameObject.SetActive(true);
         }
 
         if (!enable)
-            _titleBall.gameObject.SetActive(enable);
+            _titleBall.gameObject.SetActive(false);
 
         foreach (Transform t in transform)
         {

@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class LadderTheme : MonoBehaviour
 {
-    public bool mute;
     public AudioClip goalJingleClip, missJingleClip;
-    public List<AudioClip> songs;
     
-    private float _jingleTick, _jingleTime;
-    private int _playLevel, _stopLevel;
-    private bool _playJingle, _fade, _muteBase, _setToDefault;
-    private AudioSource _goalJingleAudioSource, _missJingleAudioSource, _activeAudioSource;
+    private bool _setToDefault;
+    private AudioSource _goalJingleAudioSource, _missJingleAudioSource;
     private List<AudioSource> _songs;
 
     void Start ()
@@ -63,37 +59,25 @@ public class LadderTheme : MonoBehaviour
         }
     }
 
-    public void SetSong(int i, bool muteBase)
-    {
-        _muteBase = muteBase;
-        _playLevel = i;
-        _fade = true;
-    }
-
-    public void StopSong(int i)
-    {
-        _stopLevel = i;
-    }
-
     public void PlaySong(bool play)
     {
-        foreach (AudioSource audio in _songs)
+        foreach (AudioSource song in _songs)
         {
             if (play)
-                audio.Play();
+                song.Play();
             else
-                audio.Stop();
+                song.Stop();
         }
     }
 
     public void PauseSong(bool pause)
     {
-        foreach (AudioSource audio in _songs)
+        foreach (AudioSource song in _songs)
         {
             if (pause)
-                audio.Play();
+                song.Play();
             else
-                audio.Pause();
+                song.Pause();
         }
     }
 

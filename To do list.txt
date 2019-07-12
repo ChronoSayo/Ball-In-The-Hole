@@ -1,12 +1,9 @@
 Gameplay:
--Press two buttons at the same time.
 
 Menu:
 
 Audio:
--Stack songs unto each other.
--Mute base song in level 3.
--Add 2 more songs.
+-New songs from Manco
 
 Visual:
 
@@ -19,6 +16,7 @@ Maybe:
 -Teleport jingle?
 
 Clear:
+-Press two buttons at the same time.
 -Add GUI for play modes.
 -Add play mode art.
 -Change board background.
@@ -44,6 +42,9 @@ Clear:
 -Credits icon (game logo).
 
 Skip:
+-Stack songs unto each other.
+-Mute base song in level 3.
+-Add 2 more songs.
 -Scale board according to texture size. Make texture repeat if too small to be a board.
 -Default wall should be white.
 --Support for changing colors.

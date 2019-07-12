@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class LockAspectRatio : MonoBehaviour {
 
@@ -9,7 +8,7 @@ public class LockAspectRatio : MonoBehaviour {
     private Vector2 _storedAspect;
 
     //Restarts the game to fix the resolution.
-    private static bool _Restarted = false;
+    private static bool _restarted = false;
 
     void Start()
     {
@@ -31,10 +30,10 @@ public class LockAspectRatio : MonoBehaviour {
 
         }
 
-        if (!_Restarted)
+        if (!_restarted)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            _Restarted = true;
+            _restarted = true;
         }
     }
 
@@ -57,13 +56,13 @@ public class LockAspectRatio : MonoBehaviour {
         }
         else
         {
-            float scalewidth = 1.0f / scaleHeight;
+            float scaleWidth = 1.0f / scaleHeight;
 
             Rect rect = camera.rect;
 
-            rect.width = scalewidth;
+            rect.width = scaleWidth;
             rect.height = 1.0f;
-            rect.x = (1.0f - scalewidth) / 2.0f;
+            rect.x = (1.0f - scaleWidth) / 2.0f;
             rect.y = 0;
 
             camera.rect = rect;

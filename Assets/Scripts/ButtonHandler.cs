@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,23 +10,23 @@ public class ButtonHandler : MonoBehaviour
     private List<GameObject> _pauseImages; //0: Pause. 1: Play.
     private List<GameObject> _controlImages; //0: Buttons. 1: Swipe.
 
-    private const string _START_FREE_BUTTON_NAME = "StartFree";
-    private const string _START_LADDER_BUTTON_NAME = "StartLadder";
-    private const string _BACKGROUND_BUTTON_NAME = "Background";
-    private const string _GRADIENT_BUTTON_NAME = "Gradient";
-    private const string _QUIT_BUTTON_NAME = "Quit";
-    private const string _HELP_BUTTON_NAME = "Help Page";
-    private const string _CREDITS_BUTTON_NAME = "Credits";
-    private const string _PAUSE_BUTTON_NAME = "Pause";
-    private const string _CONTROL_BUTTON_NAME = "Buttons/Swipe";
-    private const string _UP_LEFT_BUTTON_NAME = "Up Left";
-    private const string _UP_RIGHT_BUTTON_NAME = "Up Right";
-    private const string _DOWN_LEFT_BUTTON_NAME = "Down Left";
-    private const string _DOWN_RIGHT_BUTTON_NAME = "Down Right";
-    private const string _UP_LEFT_SWIPE = "Up Left Swipe";
-    private const string _UP_RIGHT_SWIPE = "Up Right Swipe";
-    private const string _DOWN_LEFT_SWIPE = "Down Left Swipe";
-    private const string _DOWN_RIGHT_SWIPE = "Down Right Swipe";
+    private const string StartFreeButtonName = "StartFree";
+    private const string StartLadderButtonName = "StartLadder";
+    private const string BackgroundButtonName = "Background";
+    private const string GradientButtonName = "Gradient";
+    private const string QuitButtonName = "Quit";
+    private const string HelpButtonName = "Help Page";
+    private const string CreditsButtonName = "Credits";
+    private const string PauseButtonName = "Pause";
+    private const string ControlButtonName = "Buttons/Swipe";
+    private const string UpLeftButtonName = "Up Left";
+    private const string UpRightButtonName = "Up Right";
+    private const string DownLeftButtonName = "Down Left";
+    private const string DownRightButtonName = "Down Right";
+    private const string UpLeftSwipe = "Up Left Swipe";
+    private const string UpRightSwipe = "Up Right Swipe";
+    private const string DownLeftSwipe = "Down Left Swipe";
+    private const string DownRightSwipe = "Down Right Swipe";
 
     public static bool StartFreeButton, StartLadderButton, BackgroundButton, GradientButton, QuitButton, PauseButton, HelpButton, CreditsButton;
     public static bool ControlButton; //True = Buttons. False = Swipe.
@@ -55,7 +54,7 @@ public class ButtonHandler : MonoBehaviour
             case GameMode.GameModeState.None:
                 break;
             case GameMode.GameModeState.Start:
-                if (!_buttons.Find(x => x.name == _START_LADDER_BUTTON_NAME).activeSelf)
+                if (!_buttons.Find(x => x.name == StartLadderButtonName).activeSelf)
                     EnableStartButtons(true);
                 break;
             case GameMode.GameModeState.Info:
@@ -73,8 +72,8 @@ public class ButtonHandler : MonoBehaviour
     {
         foreach (GameObject go in _buttons)
         {
-            if(go.name != _QUIT_BUTTON_NAME && !go.name.Contains("Start") && go.name != _BACKGROUND_BUTTON_NAME && go.name != _GRADIENT_BUTTON_NAME &&
-                go.name != _HELP_BUTTON_NAME && go.name != _CREDITS_BUTTON_NAME)
+            if(go.name != QuitButtonName && !go.name.Contains("Start") && go.name != BackgroundButtonName && go.name != GradientButtonName &&
+                go.name != HelpButtonName && go.name != CreditsButtonName)
                 go.SetActive(enable);
         }
     }
@@ -82,8 +81,8 @@ public class ButtonHandler : MonoBehaviour
     {
         foreach (GameObject go in _buttons)
         {
-            if (go.name.Contains("Start") || go.name == _BACKGROUND_BUTTON_NAME || go.name == _GRADIENT_BUTTON_NAME || go.name == _HELP_BUTTON_NAME || 
-                go.name == _CREDITS_BUTTON_NAME)
+            if (go.name.Contains("Start") || go.name == BackgroundButtonName || go.name == GradientButtonName || go.name == HelpButtonName || 
+                go.name == CreditsButtonName)
                 go.SetActive(enable);
         }
     }
@@ -91,10 +90,10 @@ public class ButtonHandler : MonoBehaviour
     {
         foreach (GameObject go in _buttons)
         {
-            if (go.name != _QUIT_BUTTON_NAME && !go.name.Contains("Start") &&
-                go.name != _BACKGROUND_BUTTON_NAME && go.name != _PAUSE_BUTTON_NAME &&
-                go.name != _GRADIENT_BUTTON_NAME && go.name != _CONTROL_BUTTON_NAME &&
-                go.name != _HELP_BUTTON_NAME && go.name != _CREDITS_BUTTON_NAME)
+            if (go.name != QuitButtonName && !go.name.Contains("Start") &&
+                go.name != BackgroundButtonName && go.name != PauseButtonName &&
+                go.name != GradientButtonName && go.name != ControlButtonName &&
+                go.name != HelpButtonName && go.name != CreditsButtonName)
                 go.SetActive(enable);
         }
     }
@@ -102,8 +101,8 @@ public class ButtonHandler : MonoBehaviour
     {
         foreach (GameObject go in _buttons)
         {
-            if (go.name == _UP_LEFT_SWIPE || go.name == _UP_RIGHT_SWIPE ||
-                go.name == _DOWN_LEFT_SWIPE || go.name == _DOWN_RIGHT_SWIPE)
+            if (go.name == UpLeftSwipe || go.name == UpRightSwipe ||
+                go.name == DownLeftSwipe || go.name == DownRightSwipe)
                 go.SetActive(enable);
         }
     }
@@ -111,7 +110,7 @@ public class ButtonHandler : MonoBehaviour
     {
         foreach (GameObject go in _buttons)
         {
-            if (go.name != _QUIT_BUTTON_NAME)
+            if (go.name != QuitButtonName)
                 go.SetActive(enable);
         }
     }
@@ -166,7 +165,7 @@ public class ButtonHandler : MonoBehaviour
             entryUp.callback.AddListener(x => { OnPointerUp((PointerEventData)x); });
             et.triggers.Add(entryUp);
 
-            if (go.name == _CONTROL_BUTTON_NAME)
+            if (go.name == ControlButtonName)
             {
                 _controlButton = go;
                 ControlButton = true;
@@ -186,6 +185,8 @@ public class ButtonHandler : MonoBehaviour
     }
     private void HandleButtonClick(PointerEventData data, bool enable)
     {
+        if (!data.selectedObject)
+            return;
         string button = data.selectedObject.name;
 
         DisableAllButtons();
@@ -194,37 +195,37 @@ public class ButtonHandler : MonoBehaviour
             case "":
                 Debug.Log("Nothing");
                 break;
-            case _QUIT_BUTTON_NAME:
+            case QuitButtonName:
                 QuitButton = enable;
                 break;
-            case _START_FREE_BUTTON_NAME:
+            case StartFreeButtonName:
                 StartFreeButton = enable;
                 break;
-            case _START_LADDER_BUTTON_NAME:
+            case StartLadderButtonName:
                 StartLadderButton = enable;
                 break;
-            case _BACKGROUND_BUTTON_NAME:
+            case BackgroundButtonName:
                 BackgroundButton = enable;
                 break;
-            case _GRADIENT_BUTTON_NAME:
+            case GradientButtonName:
                 GradientButton = enable;
                 break;
-            case _HELP_BUTTON_NAME:
+            case HelpButtonName:
                 HelpButton = enable;
                 break;
-            case _CREDITS_BUTTON_NAME:
+            case CreditsButtonName:
                 CreditsButton = enable;
                 break;
-            case _UP_LEFT_BUTTON_NAME:
+            case UpLeftButtonName:
                 UpLeftButton = enable;
                 break;
-            case _UP_RIGHT_BUTTON_NAME:
+            case UpRightButtonName:
                 UpRightButton = enable;
                 break;
-            case _DOWN_LEFT_BUTTON_NAME:
+            case DownLeftButtonName:
                 DownLeftButton = enable;
                 break;
-            case _DOWN_RIGHT_BUTTON_NAME:
+            case DownRightButtonName:
                 DownRightButton = enable;
                 break;
         }
@@ -238,13 +239,13 @@ public class ButtonHandler : MonoBehaviour
             case "":
                 Debug.Log("Nothing");
                 break;
-            case _CONTROL_BUTTON_NAME:
+            case ControlButtonName:
                 ControlButton = !ControlButton;
                 HandleControlButton();
                 EnableSwipeButtons(!ControlButton);
                 SwitchControlsImage(ControlButton);
                 break;
-            case _PAUSE_BUTTON_NAME:
+            case PauseButtonName:
                 PauseButton = !PauseButton;
                 SwitchPauseImage(PauseButton);
                 break;

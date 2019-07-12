@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class Platform : MonoBehaviour
 {
@@ -16,15 +12,6 @@ public class Platform : MonoBehaviour
     private float _moveSpeed, _rotSpeed;
     private float _maxHeight;
     private bool _canRotate;
-    private List<GameObject> _buttons;
-    private List<ButtonPressed> _pressedButtons;
-
-
-    private struct ButtonPressed
-    {
-        public string name;
-        public bool pressed;
-    }
 
     void Start ()
     {
@@ -241,7 +228,7 @@ public class Platform : MonoBehaviour
         get
         {
             return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ||
-                ButtonHandler.UpLeftButton || ButtonHandler.UpRightButton;;
+                ButtonHandler.UpLeftButton || ButtonHandler.UpRightButton;
         }
     }
     private bool GetInputDown

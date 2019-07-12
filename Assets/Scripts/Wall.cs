@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour
     
     private Dictionary<int, List<Transform>> _levelHoles;
 
-    private const int _LEVELS = 5;
+    private const int Levels = 5;
 
     void Start()
     {
@@ -16,18 +16,18 @@ public class Wall : MonoBehaviour
         Teleports = new List<Transform>();
         SetHolesFromLeader();
         
-        for (int i = 0; i < _LEVELS; i++)
+        for (int i = 0; i < Levels; i++)
             Holes.AddRange(_levelHoles[i]);
     }
 
     private void SetHolesFromLeader()
     {
         _levelHoles = new Dictionary<int, List<Transform>>();
-        for (int i = 0; i < _LEVELS; i++)
+        for (int i = 0; i < Levels; i++)
             _levelHoles.Add(i, new List<Transform>());
         foreach (Transform t in holesLeader)
         {
-            int listNum = -1;
+            int listNum;
             if (!int.TryParse(t.name[t.name.Length - 1].ToString(), out listNum))
                 continue;
             foreach (Transform tChild in t)
@@ -41,7 +41,7 @@ public class Wall : MonoBehaviour
     public void SetupGoal()
     {
         if (GameMode.CurrentPlayMode == GameMode.PlayMode.Free)
-            for (int i = 0; i < _LEVELS; i++)
+            for (int i = 0; i < Levels; i++)
                 PickRandomGoalFreeMode(i);
         else if (GameMode.CurrentPlayMode == GameMode.PlayMode.Ladder)
             PickRandomGoalLadderMode(0);
@@ -125,8 +125,7 @@ public class Wall : MonoBehaviour
 
     public void PickRandomGoalFreeMode(int level)
     {
-        List<Transform> goalHoles = new List<Transform>();
-        goalHoles = _levelHoles[level].FindAll(x => x.name.EndsWith("G"));
+        var goalHoles = _levelHoles[level].FindAll(x => x.name.EndsWith("G"));
         Transform goalHole = goalHoles[Random.Range(0, goalHoles.Count)];
         if (Goals.Count < level + 1)
             Goals.Add(goalHole);
@@ -139,13 +138,13 @@ public class Wall : MonoBehaviour
 
     public void PickRandomGoalLadderMode(int points)
     {
-        const int _NEW_LEVEL_INT = 115;
-        const float _MULTIPLIER = 2.5f;
+        const int newLevelInt = 115;
+        const float multiplier = 2.5f;
         int newLevel = 0;
 
-        for(int i = 1; i < _LEVELS; i++)
+        for(int i = 1; i < Levels; i++)
         {
-            if (points > _NEW_LEVEL_INT * (_MULTIPLIER * i))
+            if (points > newLevelInt * (multiplier * i))
                 newLevel = i;
             else
                 break;
@@ -169,10 +168,7 @@ public class Wall : MonoBehaviour
     /// <returns></returns>
     public int GetGoalIndex(Transform hole)
     {
-        if (!Goals.Contains(hole))
-            return 0;
-
-        return int.Parse(hole.parent.name[hole.parent.name.Length - 1].ToString()); ;
+        return !Goals.Contains(hole) ? 0 : int.Parse(hole.parent.name[hole.parent.name.Length - 1].ToString());
     }
 
     public List<Transform> Holes { get; private set; }

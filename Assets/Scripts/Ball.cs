@@ -173,7 +173,7 @@ public class Ball : MonoBehaviour
     {
         int goalIndex = _wallScript.GetGoalIndex(enteredHole);
         goalIndex--;
-        _isGoal = goalIndex == -1 ? false : true;
+        _isGoal = goalIndex != -1;
         
         _scoreboardScript.SetScore(goalIndex);
 

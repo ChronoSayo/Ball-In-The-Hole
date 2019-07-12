@@ -15,11 +15,11 @@ public class BallSoundEffects : MonoBehaviour
     private Ball _ballScript;
     private Wall _wallScript;
     private float _distToGround;
-    private bool _fallThud, _enteredHoleFX, _gasped;
+    private bool _fallThud, _enteredHoleFx, _gasped;
     private Rigidbody _rigidbody;
     private AudioSource _ballRollAudioSource, _ballOtherAudioSource;
 
-    private const float _SOUND_SPEED_DISTORTION = 7, _DISTANCE_OFFSET = 0.1f;
+    private const float SoundSpeedDistortion = 7, DistanceOffset = 0.1f;
 
     void Start ()
     {
@@ -35,7 +35,7 @@ public class BallSoundEffects : MonoBehaviour
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _distToGround = _rigidbody.GetComponent<Collider>().bounds.extents.y;
 
-        _fallThud = _enteredHoleFX = _gasped = false;
+        _fallThud = _enteredHoleFx = _gasped = false;
     }
     
     void Update ()
@@ -50,10 +50,10 @@ public class BallSoundEffects : MonoBehaviour
             return;
         }
 
-        if (GameMode.CurrentGameplayState == GameMode.GameplayState.Reset && _enteredHoleFX)
+        if (GameMode.CurrentGameplayState == GameMode.GameplayState.Reset && _enteredHoleFx)
         {
             _ballOtherAudioSource.PlayOneShot(ballOutOfHoleClip);
-            _enteredHoleFX = false;
+            _enteredHoleFx = false;
         }
 
         if (Grounded())
@@ -67,12 +67,12 @@ public class BallSoundEffects : MonoBehaviour
         }
         else
         {
-            if (_ballScript.EnteringHole && !_enteredHoleFX)
+            if (_ballScript.EnteringHole && !_enteredHoleFx)
             {
                 _ballOtherAudioSource.PlayOneShot(ballIntoHoleClip);
                 if(_ballScript.Teleporting)
                     _ballOtherAudioSource.PlayOneShot(teleport);
-                _enteredHoleFX = true;
+                _enteredHoleFx = true;
             }
 
             if (_ballRollAudioSource.isPlaying)
@@ -130,12 +130,12 @@ public class BallSoundEffects : MonoBehaviour
 
     private bool Grounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, _distToGround + _DISTANCE_OFFSET);
+        return Physics.Raycast(transform.position, -Vector3.up, _distToGround + DistanceOffset);
     }
 
     private void RollSoundBasedOnSpeed()
     {
-        _ballRollAudioSource.pitch = GetSpeed / _SOUND_SPEED_DISTORTION;
+        _ballRollAudioSource.pitch = GetSpeed / SoundSpeedDistortion;
     }
 
     private void OnCollisionEnter(Collision collision)
