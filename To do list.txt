@@ -1,0 +1,53 @@
+Gameplay:
+-Press two buttons at the same time.
+
+Menu:
+
+Audio:
+-Stack songs unto each other.
+-Mute base song in level 3.
+-Add 2 more songs.
+
+Visual:
+
+Bugs:
+-Fix code.
+
+Release:
+
+Maybe:
+-Teleport jingle?
+
+Clear:
+-Add GUI for play modes.
+-Add play mode art.
+-Change board background.
+-Add board background change icon
+-Remove combo; add time based bonus instead.
+-Add 2 more levels.
+-Add background.
+-Make real levels.
+-Add applause for right hole.
+-Add boos or awws for wrong hole.
+-Teleport holes.
+-Revisit gyro tech.
+-Look into if ball is getting into hole too low.
+-Title objects not appearing in front of camera.
+-Fix scoring in ladder mode.
+-Gasp close to goal holes.
+-Play goal jingle until ready.
+-Add legacy counter for ladder mode.
+-Add more bonus for top in free mode.
+-Credits page.
+-Help page.
+-Add icon.
+-Credits icon (game logo).
+
+Skip:
+-Scale board according to texture size. Make texture repeat if too small to be a board.
+-Default wall should be white.
+--Support for changing colors.
+--Gyro-dependent?
+-Higher level should have darker walls
+-Arrow pointing at direction the hole is when not visible on screen.
+-Quit game takes longer than quit play.
