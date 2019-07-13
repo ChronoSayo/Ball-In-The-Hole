@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
-public class LadderThemeTrigger : LadderTheme
+public class LadderThemeTrigger : MonoBehaviour
 {
+    private LadderTheme _ladderThemeScript;
     private AudioSource _audio;
     private FadeState _fadeState;
     
@@ -12,6 +13,7 @@ public class LadderThemeTrigger : LadderTheme
 
     private void Start()
     {
+        _ladderThemeScript = transform.parent.GetComponent<LadderTheme>();
         _audio = GetComponent<AudioSource>();
         _audio.playOnAwake = false;
         _audio.volume = int.Parse(name[name.Length - 1].ToString()) == 1 ? 1 : 0;
@@ -25,11 +27,11 @@ public class LadderThemeTrigger : LadderTheme
             case FadeState.None:
                 break;
             case FadeState.FadeIn:
-                if (Fade(_audio, true))
+                if (_ladderThemeScript.Fade(_audio, true))
                     _fadeState = FadeState.None;
                 break;
             case FadeState.FadeOut:
-                if (Fade(_audio, false))
+                if (_ladderThemeScript.Fade(_audio, false))
                     _fadeState = FadeState.None;
                 break;
         }

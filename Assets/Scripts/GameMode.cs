@@ -123,7 +123,7 @@ public class GameMode : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         CurrentGameModeState = GameModeState.Gameplay;
         CurrentGameplayState = GameplayState.Playing;
-        _ladderThemeScript.PlaySong(true);
+        _ladderThemeScript.StartMusic();
         _wallScript.SetupTeleport();
         _wallScript.SetupGoal();
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public Transform holesLeader;
+    public Transform HolesLeader;
     
     private Dictionary<int, List<Transform>> _levelHoles;
 
@@ -25,7 +25,7 @@ public class Wall : MonoBehaviour
         _levelHoles = new Dictionary<int, List<Transform>>();
         for (int i = 0; i < Levels; i++)
             _levelHoles.Add(i, new List<Transform>());
-        foreach (Transform t in holesLeader)
+        foreach (Transform t in HolesLeader)
         {
             int listNum;
             if (!int.TryParse(t.name[t.name.Length - 1].ToString(), out listNum))
@@ -74,7 +74,7 @@ public class Wall : MonoBehaviour
             case GameMode.GameplayState.None:
                 break;
             case GameMode.GameplayState.Playing:
-                FlashHoleLights(Goals, 1);
+                //FlashHoleLights(Goals, 1);
                 FlashHoleLights(Teleports, 2);
                 break;
             case GameMode.GameplayState.Resetting:
@@ -112,8 +112,8 @@ public class Wall : MonoBehaviour
 
         foreach(Transform t in Goals)
         {
-            t.GetComponent<Light>().color = Color.green;
-            t.GetComponent<Light>().intensity = 0;
+            t.GetComponent<Light>().color = Color.magenta;
+            t.GetComponent<Light>().intensity = 1;
         }
 
         foreach (Transform t in Teleports)

@@ -119,6 +119,13 @@ public class Ball : MonoBehaviour
             CalculateScore(enteredHole);
             _currentStartPosition = _startPosition;
 
+            _ladderThemeScript.PlayJingle(_isGoal);
+
+            if (_isGoal)
+                _holeFX.PlayCheers();
+            else
+                _holeFX.PlayBoos();
+
         }
 
         Vector3 platformPosition = _platformScript.transform.position;
@@ -128,15 +135,7 @@ public class Ball : MonoBehaviour
 
         _state = State.EnteringHole;
 
-        if (Teleporting)
-            return;
-
-        _ladderThemeScript.PlayJingle(_isGoal);
-
-        if (_isGoal)
-            _holeFX.PlayCheers();
-        else
-            _holeFX.PlayBoos();
+        _ladderThemeScript.InSegue();
     }
 
     private IEnumerator DelayHoleEnterable()
@@ -165,7 +164,7 @@ public class Ball : MonoBehaviour
             _currentStartPosition = _wallScript.Teleports[1].position;
         else
             _currentStartPosition = _wallScript.Teleports[0].position;
-
+        
         _wallScript.SetupTeleport();
     }
 
@@ -192,7 +191,6 @@ public class Ball : MonoBehaviour
             _state = State.EnteredHole;
             transform.GetComponent<Renderer>().enabled = false;
         }
-        _ladderThemeScript.SetToDefault();
     }
 
     private IEnumerator Freeze()
