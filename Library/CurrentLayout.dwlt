@@ -557,7 +557,7 @@ MonoBehaviour:
   m_LastProjectPath: E:\Game Development\Unity Projects\Ball-In-The-Hole
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 42}
+    scrollPos: {x: 0, y: 22}
     m_SelectedIDs: fe260000
     m_LastClickedID: 9982
     m_ExpandedIDs: 000000000e250000b2250000c0260000c032000000ca9a3bffffff7f
@@ -576,7 +576,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 4}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: e2040000e4040000ee0400000c050000481c0000241c0000201c00001a1c0000ec2700003e220000ec210000d62100006eb1ffff04220000a8220000922200001e230000a4220000e2210000f0210000ec2400001c22000024240000aa45fdffe2240000402200006e23000062230000562300005823000012220000e623000050050000822500001a2200001622000052240000ac2b0000fa2b0000e2090000fc2400009c240000d6270000982c0000c224000070250000e62a000042280000cc290000a62d0000e6310000ea400000b8250000523b0000cc280000f03a00008c2c000098270000c03c000022310000ca2a0000fe3b0000bc3e000070340000de3600008c370000403400004c360000c2290000823700000c4600008a39000006270000f8280000b83000007c2b0000ec2f0000802e000094250000ba3800008a2500001227000012290000f6250000882f00000626000048290000fe3400002a390000223a00006e4a00004c340000023500001c36000096330000963f0000949100001e2e00003e68e4ff166e00007e3c000064490000be820000a4580000425900002e2a0000d00100002626000006d6fcffb6240000ac2400001a2400009824000028240000322400007e2400008624000086340000762400007824000088240000ee2e0000f226000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 5}
+    m_ScrollPosition: {x: 0, y: 186}
     m_GridSize: 16
   m_DirectoriesAreaWidth: 110
 --- !u!114 &20
@@ -673,21 +673,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: d6edfffff4edffffceeeffffe4fbffff00000000
+    m_ExpandedIDs: 8605fbffa405fbff7e06fbffac0efbff920ffbff7010fbff9c42fbff9a50fbff3863fbff8e7efbff5e96fbff2ebafbff44fafbffdcc7fcffc4d6fcffbe53fdff7677fdff4c9bfdffc8affdffe6f6ffffe4fbffff00000000ae270000fc27000078290000a6290000982a0000d62a0000082b00000c2b0000742b0000c42b0000f42b0000322c0000362c00008e2c0000362d0000622d0000662d0000ee2d0000002e00000c2e0000302e0000522e000084310100e44a0100524b0100b06401001e650100b698010016670200e28002000aea0300a81d04007a370400324904007ca50400
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Hole (49)
+      m_OriginalName: Hole (49)
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -2290
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 12}
     m_SearchString: 
@@ -723,14 +723,14 @@ MonoBehaviour:
     width: 892
     height: 654
   m_SceneLighting: 1
-  lastFramingTime: 14966.971873625604
+  lastFramingTime: 18513.458200178895
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -57.579853, y: 22.909216, z: -42.27404}
+    m_Target: {x: -2.9450455, y: 18.887129, z: -49.186653}
     speed: 2
-    m_Value: {x: -57.579853, y: 22.909216, z: -42.27404}
+    m_Value: {x: -2.9450455, y: 18.887129, z: -49.186653}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -753,18 +753,18 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.16794643, y: -0.6027639, z: -0.13166715, w: -0.76885206}
+    m_Target: {x: -0.18395416, y: 0.023977915, z: 0.004489215, w: 0.98263204}
     speed: 2
-    m_Value: {x: 0.16794643, y: -0.6027639, z: -0.13166715, w: -0.76885206}
+    m_Value: {x: -0.18395416, y: 0.023977915, z: 0.004489215, w: 0.98263204}
   m_Size:
-    m_Target: 11.150544
+    m_Target: 6.18202
     speed: 2
-    m_Value: 11.150544
+    m_Value: 6.18202
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
-  m_LastSceneViewRotation: {x: 0.028834777, y: 0.01350477, z: -0.00038969485, w: 0.9994929}
+  m_LastSceneViewRotation: {x: -0.1335675, y: -0.03676244, z: -0.004957639, w: 0.99034524}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
