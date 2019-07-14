@@ -132,7 +132,7 @@ public class ButtonHandler : MonoBehaviour
     private void HandleControlButton()
     {
         float alpha = _buttons[0].GetComponent<Button>().colors.normalColor.a;
-        Color newColor = ControlButton ? new Color(0, 1, 0, alpha) : new Color(0, 0, 1, alpha);
+        Color newColor = ControlButton ? new Color(0, 0, 1, alpha) : new Color(0.5f, 0.5f, 1, alpha);
         ChangeControlButton(newColor);
         EnablePlayingButtons(ControlButton);
     }
