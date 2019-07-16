@@ -35,12 +35,6 @@ public class LadderTheme : MonoBehaviour
             _songs.Add(t.GetComponent<AudioSource>());
     }
 
-    private void Update()
-    {
-        if(_setToDefault)
-            FadingAllSongs();
-    }
-
     public bool Fade(AudioSource song, bool increase)
     {
         float crossfadeSpeed = 0.05f;
@@ -50,23 +44,8 @@ public class LadderTheme : MonoBehaviour
 
     public void InSegue()
     {
-        //_setToDefault = true;
         foreach (AudioSource song in _songs)
             song.volume = 0;
-    }
-
-    public void FadingAllSongs()
-    {
-        foreach (AudioSource song in _songs)
-        {
-            if (song.transform.name.EndsWith("1"))
-                Fade(song, true);
-            else
-            {
-                if (Fade(song, false))
-                    _setToDefault = false;
-            }
-        }
     }
 
     public void StartMusic()

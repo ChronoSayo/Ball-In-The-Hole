@@ -119,8 +119,6 @@ public class Ball : MonoBehaviour
             CalculateScore(enteredHole);
             _currentStartPosition = _startPosition;
 
-            _ladderThemeScript.PlayJingle(_isGoal);
-
             if (_isGoal)
                 _holeFX.PlayCheers();
             else
@@ -136,6 +134,7 @@ public class Ball : MonoBehaviour
         _state = State.EnteringHole;
 
         _ladderThemeScript.InSegue();
+        _ladderThemeScript.PlayJingle(_isGoal);
     }
 
     private IEnumerator DelayHoleEnterable()
