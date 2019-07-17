@@ -18,10 +18,9 @@ public class Platform : MonoBehaviour
         _startRotation = transform.rotation;
         _startPosition = transform.position;
         _canRotate = true;
-
-        //bool isAndroid = Application.platform == RuntimePlatform.Android;
-        _moveSpeed = moveSpeed; // * (isAndroid ? 2 : 1);
-        _rotSpeed = rotSpeed; //* (isAndroid ? 2 : 1);
+        
+        _moveSpeed = moveSpeed;
+        _rotSpeed = rotSpeed;
 
         _audio = gameObject.AddComponent<AudioSource>();
         _audio.clip = clip;
@@ -112,7 +111,7 @@ public class Platform : MonoBehaviour
             if (SwipeHandler.LeftSide && SwipeHandler.RightSide)
                 speed = 0;
             transform.Rotate(0, 0, speed);
-            if (_canRotate && transform.position.y < _maxHeight)
+            if (_canRotate && transform.position.y < _maxHeight && transform.position.y <= _startPosition.y)
                 MovePlatform(false);
         }
         else if (SwipeHandler.UpSwipe)
@@ -124,7 +123,7 @@ public class Platform : MonoBehaviour
             if (SwipeHandler.LeftSide && SwipeHandler.RightSide)
                 speed = 0;
             transform.Rotate(0, 0, speed);
-            if (_canRotate && transform.position.y > _startPosition.y)
+            if (_canRotate && transform.position.y >= _startPosition.y)
                 MovePlatform(false);
         }
     }
