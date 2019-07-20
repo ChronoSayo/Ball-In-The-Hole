@@ -80,7 +80,6 @@ public class GameMode : MonoBehaviour
             _wallRenders.Add(t.GetComponent<Renderer>());
 
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Images", ".jpg", ".png"));
-        FileBrowser.AddQuickLink("Dumb Shit", "E:\\Pictures\\Dumb Shit");
     }
 
     void Update()
