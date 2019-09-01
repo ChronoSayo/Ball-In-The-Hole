@@ -78,12 +78,13 @@ public class LadderTheme : MonoBehaviour
         }
     }
 
-    public void PlayJingle(bool goal)
+    public void PlayJingle(bool goal, bool teleport)
     {
         AudioSource jingle = goal ? _goalJingleAudioSource : _missJingleAudioSource;
-        jingle.volume = 1;
+        jingle.volume = teleport ? 0 : 1;
         _segueJingleAudioSource.volume = 1;
-        StartCoroutine(JingleDuration(jingle, 2));
+        if(!teleport)
+            StartCoroutine(JingleDuration(jingle, 2));
         StartCoroutine(JingleDuration(_segueJingleAudioSource, 2));
     }
 

@@ -55,11 +55,7 @@ public class Platform : MonoBehaviour
                     _audio.UnPause();
 
                 LimitRotation();
-
-                if (ButtonHandler.ControlButton)
-                    HandleInput();
-                else
-                    HandleSwipe();
+                HandleInput();
                 break;
             case GameMode.GameplayState.Resetting:
             case GameMode.GameplayState.Ending:
@@ -99,38 +95,10 @@ public class Platform : MonoBehaviour
             _audio.Stop();
     }
 
-    private void HandleSwipe()
-    {
-        float speed = 0;
-        if (SwipeHandler.DownSwipe)
-        {
-            if (SwipeHandler.LeftSide)
-                speed = _rotSpeed;
-            else if (SwipeHandler.RightSide)
-                speed = -_rotSpeed;
-            if (SwipeHandler.LeftSide && SwipeHandler.RightSide)
-                speed = 0;
-            transform.Rotate(0, 0, speed);
-            if (_canRotate && transform.position.y < _maxHeight && transform.position.y <= _startPosition.y)
-                MovePlatform(false);
-        }
-        else if (SwipeHandler.UpSwipe)
-        {
-            if (SwipeHandler.LeftSide)
-                speed = -_rotSpeed;
-            else if (SwipeHandler.RightSide)
-                speed = _rotSpeed;
-            if (SwipeHandler.LeftSide && SwipeHandler.RightSide)
-                speed = 0;
-            transform.Rotate(0, 0, speed);
-            if (_canRotate && transform.position.y >= _startPosition.y)
-                MovePlatform(false);
-        }
-    }
-
     private void RotatePlatform(bool up)
     {
         float speed = 0;
+        up = ButtonHandler.ControlButton ? up : !up;
         if (up)
         {
             if (ClockwiseUp)
@@ -142,6 +110,9 @@ public class Platform : MonoBehaviour
             transform.Rotate(0, 0, speed);
             if (_canRotate && transform.position.y < _maxHeight)
                 MovePlatform(true);
+
+            if (_canRotate)
+                PlayAudio();
         }
         else
         {
@@ -154,10 +125,10 @@ public class Platform : MonoBehaviour
             transform.Rotate(0, 0, speed);
             if (_canRotate && transform.position.y > _startPosition.y)
                 MovePlatform(false);
-        }
 
-        if (_canRotate)
-            PlayAudio();
+            if (_canRotate)
+                PlayAudio();
+        }
     }
 
     private void MovePlatform(bool up)
@@ -197,28 +168,28 @@ public class Platform : MonoBehaviour
     {
         get
         {
-            return Input.GetKey(KeyCode.UpArrow) || ButtonHandler.UpRightButton;
+            return Input.GetKey(KeyCode.UpArrow) || ButtonHandler.UpRightButton || (!ButtonHandler.ControlButton && SwipeHandler.LeftSide);
         }
     }
     private bool ClockwiseDown
     {
         get
         {
-            return Input.GetKey(KeyCode.DownArrow) || ButtonHandler.DownRightButton;
+            return Input.GetKey(KeyCode.DownArrow) || ButtonHandler.DownRightButton || (!ButtonHandler.ControlButton && SwipeHandler.LeftSide);
         }
     }
     private bool CounterClockwiseUp
     {
         get
         {
-            return Input.GetKey(KeyCode.W) || ButtonHandler.UpLeftButton;
+            return Input.GetKey(KeyCode.W) || ButtonHandler.UpLeftButton || (!ButtonHandler.ControlButton && SwipeHandler.RightSide);
         }
     }
     private bool CounterClockwiseDown
     {
         get
         {
-            return Input.GetKey(KeyCode.S) || ButtonHandler.DownLeftButton;
+            return Input.GetKey(KeyCode.S) || ButtonHandler.DownLeftButton || (!ButtonHandler.ControlButton && SwipeHandler.RightSide);
         }
     }
 
@@ -227,7 +198,8 @@ public class Platform : MonoBehaviour
         get
         {
             return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) ||
-                ButtonHandler.UpLeftButton || ButtonHandler.UpRightButton;
+                ButtonHandler.UpLeftButton || ButtonHandler.UpRightButton || 
+                (!ButtonHandler.ControlButton && SwipeHandler.UpSwipe);
         }
     }
     private bool GetInputDown
@@ -235,7 +207,8 @@ public class Platform : MonoBehaviour
         get
         {
             return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) ||
-                ButtonHandler.DownLeftButton || ButtonHandler.DownRightButton;
+                ButtonHandler.DownLeftButton || ButtonHandler.DownRightButton ||
+                (!ButtonHandler.ControlButton && SwipeHandler.DownSwipe);
         }
     }
 

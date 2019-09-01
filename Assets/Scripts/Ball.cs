@@ -134,7 +134,7 @@ public class Ball : MonoBehaviour
         _state = State.EnteringHole;
 
         _ladderThemeScript.InSegue();
-        _ladderThemeScript.PlayJingle(_isGoal);
+        _ladderThemeScript.PlayJingle(_isGoal, Teleporting);
     }
 
     private IEnumerator DelayHoleEnterable()
